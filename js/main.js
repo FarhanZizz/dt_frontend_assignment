@@ -106,7 +106,7 @@ function createAssetContainter(assets) {
               ? '<div class="asset-article"><a href="' +
                   content +
                   '" target="_blank" rel="noopener noreferrer">Read Article</a></div>'
-              : '<div class="asset-article"><textarea placeholder="Write your article here..."></textarea></div>';
+              : '<div class="asset-article"><div class="article-divider"></div><div class="article-body"><label class="article-label">Title</label><input type="text" class="article-input" placeholder="" /><label class="article-label">Content</label><div class="editor-toolbar"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Tools</span><span>Table</span><span>Help</span></div></div></div>';
 
           default:
             return "";
