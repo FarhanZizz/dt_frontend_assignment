@@ -13,10 +13,12 @@ function initializePage(projectData) {
     console.error("Invalid project data");
     return;
   }
-  console.log("First Task:", projectData);
+  console.log("First Task:", projectData.tasks[0].assets);
 
   renderProjectHeader(projectData.title);
   renderTaskHeader(projectData.tasks[0]);
+  //   renderAssetGrid(projectData.tasks[0].assets);
+  createAssetContainter(projectData.tasks[0].assets);
 }
 
 function renderProjectHeader(title) {
@@ -30,4 +32,87 @@ function renderTaskHeader(task) {
 
   taskTitle.textContent = task.task_title || "Task Title";
   taskDescription.textContent = task.task_description || "Task Description";
+}
+
+function createAssetContainter(assets) {
+  const assetContainer = document.getElementById("assetGrid");
+  assetContainer.innerHTML = "";
+
+  assets.forEach((asset) => {
+    const assetDiv = document.createElement("div");
+    assetDiv.id = asset.asset_id;
+    assetDiv.className = "asset-card";
+    assetDiv.innerHTML = `
+      <div class="asset-header">
+        <h1>${asset.asset_title || "Asset Title"}</h1>
+        <img src="assets/asset-info.svg" alt="Asset Info" />
+      </div>
+        <p class="asset-description">
+        <span>Description:</span>
+        
+        ${asset.asset_description || "Asset Description"}</p>
+      ${(() => {
+        const type = (asset.asset_content_type || "").trim().toLowerCase();
+        const content = asset.asset_content ? asset.asset_content.trim() : "";
+
+        switch (type) {
+          case "video":
+            return (
+              '<div class="asset-media"><iframe src="' +
+              content +
+              '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+            );
+
+          case "threadbuilder":
+            return `
+              <div class="asset-threadbuilder">
+                <div class="threadbuilder-header">
+                <img src="assets/collapse-icon.svg" alt="Collapse Icon" />
+                  <h1>Thread A </h1>
+                </div>
+                <div class="threadbuilder-grid">
+                <div class="sub-thread">
+                  <div class="thread-title">Sub thread 1</div>
+                   <textarea placeholder="Enter Text here"></textarea>
+                </div>
+                <div class="sub-thread">
+                  <h1 class="thread-title">Sub Interpretation 1</h1>
+                   <textarea placeholder="Enter Text here"></textarea>
+                </div>
+                <div class="thread-icons">
+                <img src="assets/thread-icons.svg" alt="Icon" />
+                </div>
+                <div class="thread-selector">
+                <select>
+                  <option value="Select Categ">Select Categ</option>
+                </select>
+                <select>
+                  <option value="Select Proces">Select Proces</option>
+                </select>
+                </div>
+                </div>
+                <div class="thread-footer">
+                <button class="subBtn">+ Sub-Thread</button>
+                <div class="sub-thread">
+                  <h1 class="thread-title">Summary for Thread A</h1>
+                   <textarea placeholder="Enter Text here"></textarea>
+                </div>
+                </div>
+              </div>
+            `;
+
+          case "article":
+            return content
+              ? '<div class="asset-article"><a href="' +
+                  content +
+                  '" target="_blank" rel="noopener noreferrer">Read Article</a></div>'
+              : '<div class="asset-article"><textarea placeholder="Write your article here..."></textarea></div>';
+
+          default:
+            return "";
+        }
+      })()}
+    `;
+    assetContainer.appendChild(assetDiv);
+  });
 }

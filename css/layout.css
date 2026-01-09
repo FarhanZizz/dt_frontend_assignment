@@ -1,5 +1,5 @@
 .main-content {
-  width: 80%;
+  width: 1086px;
   margin: 20px auto;
 }
 
@@ -15,4 +15,15 @@
   background-color: #e9ecef;
   border-radius: 5px;
   font-family: poppins;
+}
+
+#assetGrid {
+  display: grid;
+  width: 1010px;
+  margin: auto;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 58px 52px;
+  margin-top: 75px;
+  font-family: "Open Sans", sans-serif;
 }
