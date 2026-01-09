@@ -1,4 +1,4 @@
-# Deep Thought - Task Assignment
+# Deep Thought - Task Assignment | [Live Demo](https://farhanzizz.github.io/dt_frontend_assignment/)
 
 A frontend application for managing and displaying task assignments with a modern UI featuring a navbar, notice board, asset grid, and journey tracking.
 
