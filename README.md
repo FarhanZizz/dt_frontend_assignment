@@ -23,6 +23,9 @@ dt_frontend_assignment/
     ├── more-icon.svg
     ├── question-mark.svg
     ├── meeting.svg
+    ├── thread-icons.svg
+    ├── collapse-icon.svg
+    ├── asset-info.svg
     └── schedule.svg
 ```
 
