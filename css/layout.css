@@ -27,3 +27,31 @@
   margin-top: 75px;
   font-family: "Open Sans", sans-serif;
 }
+
+.fab-container {
+  position: fixed;
+  bottom: 24px;
+  right: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.fab-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background: #0029ff;
+  color: #ffffff;
+  padding: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fab-btn:hover {
+  opacity: 0.8;
+}
