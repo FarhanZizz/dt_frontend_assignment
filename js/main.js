@@ -103,10 +103,63 @@ function createAssetContainter(assets) {
 
           case "article":
             return content
-              ? '<div class="asset-article"><a href="' +
-                  content +
-                  '" target="_blank" rel="noopener noreferrer">Read Article</a></div>'
-              : '<div class="asset-article"><div class="article-divider"></div><div class="article-body"><label class="article-label">Title</label><input type="text" class="article-input" placeholder="" /><label class="article-label">Content</label><div class="editor-toolbar"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Tools</span><span>Table</span><span>Help</span></div></div></div>';
+              ? `
+              <div class="explore-section">
+          <div class="explore-section-header">
+            <img src="assets/collapse-icon.svg" alt="Collapse Icon" />
+            <span class="section-title">Introduction</span>
+          </div>
+
+          <p class="section-content">
+            The 4SA Method , How to bring a idea into progress ?
+          </p>
+
+          <div class="see-more">See More</div>
+        </div>
+
+        <div class="explore-section">
+          <div class="explore-section-header">
+            <img src="assets/collapse-icon.svg" alt="Collapse Icon" />
+            <span class="section-title">Thread A</span>
+          </div>
+
+          <p class="section-content">
+            How are you going to develop your stratergy ?
+            Which method are you going to use to develop a stratergy ?
+            What if the project is lengthy?
+          </p>
+
+          <div class="see-more">See More</div>
+        </div>
+
+        <div class="explore-subsection">
+          <div class="subsection-title">Example 1</div>
+          <p class="section-content" id="example1">
+            You have a concept , How will you put into progress?
+          </p>
+        </div>
+              `
+              : `<div class="asset-article">
+                    <div class="article-divider"></div>
+
+                    <div class="article-body">
+                      <label class="article-label">Title</label>
+                      <input type="text" class="article-input" placeholder="" />
+
+                      <label class="article-label">Content</label>
+
+                      <div class="editor-toolbar">
+                        <span>File</span>
+                        <span>Edit</span>
+                        <span>View</span>
+                        <span>Insert</span>
+                        <span>Format</span>
+                        <span>Tools</span>
+                        <span>Table</span>
+                        <span>Help</span>
+                      </div>
+                    </div>
+                  </div>`;
 
           default:
             return "";
