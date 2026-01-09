@@ -13,12 +13,12 @@ function initializePage(projectData) {
     console.error("Invalid project data");
     return;
   }
-  console.log("First Task:", projectData.tasks[0].assets);
+  console.log("First Task:", projectData.tasks[0]);
 
   renderProjectHeader(projectData.title);
   renderTaskHeader(projectData.tasks[0]);
-  //   renderAssetGrid(projectData.tasks[0].assets);
   createAssetContainter(projectData.tasks[0].assets);
+  renderJourney(projectData.tasks[0]);
 }
 
 function renderProjectHeader(title) {
@@ -168,4 +168,36 @@ function createAssetContainter(assets) {
     `;
     assetContainer.appendChild(assetDiv);
   });
+}
+// Journey Board
+const journeyBoard = document.getElementById("journeyBoard");
+const journeyToggle = document.getElementById("journeyToggle");
+const journeyClose = document.getElementById("journeyClose");
+const journeyList = document.getElementById("journeyList");
+
+journeyClose.addEventListener("click", () => {
+  journeyBoard.classList.toggle("collapsed");
+});
+
+function renderJourney(task) {
+  journeyList.innerHTML = "";
+
+  /* Task title as first item */
+  if (task.task_title) {
+    const taskItem = document.createElement("li");
+    taskItem.className = "journey-title";
+    taskItem.textContent = task.task_title;
+    journeyList.appendChild(taskItem);
+  }
+
+  /* Asset titles */
+  if (task.assets && task.assets.length) {
+    task.assets.forEach((asset) => {
+      if (asset.asset_title) {
+        const assetItem = document.createElement("li");
+        assetItem.textContent = asset.asset_title;
+        journeyList.appendChild(assetItem);
+      }
+    });
+  }
 }
